@@ -20,6 +20,6 @@ async fn evaluate() {
             }
         })).await;
 
-    println!("data = {:?}", result);
+    println!("Rule Result = {:?}", result);
 
 }
