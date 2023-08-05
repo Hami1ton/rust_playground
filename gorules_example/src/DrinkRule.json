@@ -1,0 +1,77 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "edges": [
+    {
+      "id": "f5932635-3699-403f-aacb-1a73ee74d821",
+      "sourceId": "4de95f4e-c8b9-456d-a3d0-832fc6cb5c5a",
+      "type": "edge",
+      "targetId": "a309e3b7-06ac-4de1-beeb-e7ca37594460"
+    },
+    {
+      "id": "5b2fbf8e-5411-4e99-8ae9-8cfbd74d4eb4",
+      "sourceId": "a309e3b7-06ac-4de1-beeb-e7ca37594460",
+      "type": "edge",
+      "targetId": "0a53031a-ac65-4e2a-abdc-29701ab2e542"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "4de95f4e-c8b9-456d-a3d0-832fc6cb5c5a",
+      "type": "inputNode",
+      "position": {
+        "x": 90,
+        "y": 150
+      },
+      "name": "Request"
+    },
+    {
+      "id": "a309e3b7-06ac-4de1-beeb-e7ca37594460",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 410,
+        "y": 150
+      },
+      "name": "decisionTableNode 1",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "field": "person.age",
+            "id": "kqNOmAIfwf",
+            "name": "Input",
+            "type": "expression"
+          }
+        ],
+        "outputs": [
+          {
+            "field": "drink",
+            "id": "y4ih1qVrp1",
+            "name": "Output",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "bakKHJfvN9",
+            "kqNOmAIfwf": "< 20",
+            "y4ih1qVrp1": "\"Orange Juice\""
+          },
+          {
+            "_id": "xTAWKdaIPG",
+            "kqNOmAIfwf": ">= 20",
+            "y4ih1qVrp1": "\"Beer\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "0a53031a-ac65-4e2a-abdc-29701ab2e542",
+      "type": "outputNode",
+      "position": {
+        "x": 750,
+        "y": 150
+      },
+      "name": "Response"
+    }
+  ]
+}
