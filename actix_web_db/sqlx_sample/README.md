@@ -6,8 +6,11 @@
 - install sqlx cli
 cargo install sqlx-cli
 
+- create .env file, and write database-url
+DATABASE_URL={sqlite url}
+
 - create db
-sqlx database create
+sqlx database create 
 
 - create migration files
 sqlx migrate add -r user
