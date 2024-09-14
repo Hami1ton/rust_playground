@@ -1,10 +1,14 @@
 # sqlx_sample
 
-
 ## sqlx
 
-
 ```
+- install sqlx cli
+cargo install sqlx-cli
+
+- create db
+sqlx database create
+
 - create migration files
 sqlx migrate add -r user
 
@@ -16,9 +20,7 @@ sqlx migrate revert
 
 ```
 
-
 ## sqlite3
-
 
 ```
 - connect
@@ -31,7 +33,10 @@ select * from user;
 .exit
 ```
 
-
 ## links
+
+sqlite
+https://www.sqlite.org/
+
 
 
