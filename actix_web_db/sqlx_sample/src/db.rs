@@ -23,9 +23,20 @@ pub async fn get_users() -> Vec<User>{
     }
 }
 
+pub async fn add_user(id: i64, name: String) {
+    unsafe {
+        let _ = sqlx::query(
+            "INSERT INTO user (id, name) VALUES (?, ?)",
+        )
+        .bind(id)
+        .bind(name)
+        .execute(&POOL_CACHE.clone().unwrap())
+        .await;
+    }
+}
+
 pub async fn init_db() {
     let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    let pool = SqlitePool::connect(&database_url).await.unwrap();
     
     unsafe { POOL_CACHE = Some(SqlitePool::connect(&database_url).await.unwrap()) };
 }
