@@ -1,4 +1,6 @@
 .env
 sample.db
-sqlite3.exe
 
+sqlite3.exe
+sample.db-shm
+sample.db-wal
