@@ -1,5 +1,11 @@
 # sqlx_sample
 
+## env
+
+- windows 11
+- rust v1.80.1
+- sqlx-cli v0.8.1
+
 ## sqlx
 
 ```
