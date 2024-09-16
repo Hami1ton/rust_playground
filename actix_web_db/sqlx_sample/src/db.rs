@@ -1,13 +1,7 @@
 extern crate serde_json;
 
-use sqlx::Sqlite;
-use sqlx::Pool;
 use sqlx::sqlite::SqlitePool;
-use std::env;
 use serde::{Deserialize, Serialize};
-
-
-static mut POOL_CACHE: Option<Pool<Sqlite>> = None;
 
 
 #[derive(sqlx::FromRow, Debug, Deserialize, Serialize)]
@@ -16,27 +10,18 @@ pub struct User {
     pub name: String,
 }
 
-pub async fn get_users() -> Vec<User>{
-    unsafe {
-        let users = sqlx::query_as::<_, User>("SELECT * FROM user").fetch_all(&POOL_CACHE.clone().unwrap()).await;
-        return users.expect("error");
-    }
+pub async fn get_users(db_pool: &SqlitePool) -> Vec<User>{
+    let users = sqlx::query_as::<_, User>("SELECT * FROM user").fetch_all(db_pool).await;
+    return users.expect("error");
 }
 
-pub async fn add_user(id: i64, name: String) {
-    unsafe {
-        let _ = sqlx::query(
-            "INSERT INTO user (id, name) VALUES (?, ?)",
-        )
-        .bind(id)
-        .bind(name)
-        .execute(&POOL_CACHE.clone().unwrap())
-        .await;
-    }
+pub async fn add_user(db_pool: &SqlitePool, id: i64, name: String) {
+    let _ = sqlx::query(
+        "INSERT INTO user (id, name) VALUES (?, ?)",
+    )
+    .bind(id)
+    .bind(name)
+    .execute(db_pool)
+    .await;
 }
 
-pub async fn init_db() {
-    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    
-    unsafe { POOL_CACHE = Some(SqlitePool::connect(&database_url).await.unwrap()) };
-}
