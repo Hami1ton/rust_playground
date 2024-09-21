@@ -8,11 +8,20 @@
 
 ## commands
 
+```
+- install http-server
 npm install -g http-server
 
+- run tests
+cargo test
+
+- create wasm
 wasm-pack build --target web
 
+- start server
 http-server
+
+```
 
 ## Links
 
