@@ -1,1 +1,1 @@
-# rust_sandbox
+# rust_playground
