@@ -1,5 +1,7 @@
 # cl_rule_engine
 
+wasmでルールエンジンをブラウザ上で動かしたい
+
 ## Env
 
 - WSL2(Windows11)
