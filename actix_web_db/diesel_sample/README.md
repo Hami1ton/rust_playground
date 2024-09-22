@@ -4,28 +4,32 @@
 
 - WSL2(windows11)
 - rust v1.80.1
+- diesel cli v2.2.4 (Supported Backends: sqlite)
 
 
 ## sqlx
 
 ```
-- install sqlx cli
-cargo install sqlx-cli
+- install sqlite
+sudo apt-get install libsqlite3-dev sqlite3
+
+- install diesel_cli
+cargo install diesel_cli --no-default-features --features sqlite
 
 - create .env file, and write database-url
-DATABASE_URL={sqlite url}
+DATABASE_URL=./sample.db
 
 - create db
-sqlx database create 
+diesel setup
 
 - create migration files
-sqlx migrate add -r user
+diesel migration generate user
 
 - apply migration
-sqlx migrate run
+diesel migration run
 
 - drop tables
-sqlx migrate revert
+diesel migration redo
 
 ```
 
