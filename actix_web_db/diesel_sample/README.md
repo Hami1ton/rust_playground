@@ -5,12 +5,12 @@
 - WSL2(windows11)
 - rust v1.80.1
 - diesel cli v2.2.4 (Supported Backends: sqlite)
-
+- sqlite3 v3.37.2
 
 ## sqlx
 
 ```
-- install sqlite
+- install sqlite (これやってないと、diesel_cliいれるとき落ちる)
 sudo apt-get install libsqlite3-dev sqlite3
 
 - install diesel_cli
@@ -50,7 +50,6 @@ select * from user;
 
 sqlite
 https://www.sqlite.org/
-
 
 diesel
 https://diesel.rs/guides/getting-started
