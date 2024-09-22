@@ -1,4 +1,4 @@
-use actix_web::{web, get, App, HttpResponse, HttpServer, Responder};
+use actix_web::{web, get, post, App, HttpResponse, HttpServer, Responder};
 use actix_web::middleware::Logger;
 use env_logger::Env;
 use dotenv::dotenv;
@@ -23,8 +23,14 @@ async fn get_users(data: web::Data<AppState>) -> impl Responder {
     HttpResponse::Ok().json(users)
 }
 
-#[get("/add-user")]
-async fn add_user(data: web::Data<AppState>) -> impl Responder {
+#[post("/add-user")]
+async fn add_user(data: web::Data<AppState>, req: web::Json<model::User>) -> impl Responder {
+    println!("{:?}", &req.id);
+    println!("{:?}", &req.name);
+
+    let mut conn = data.db_pool.get().unwrap();
+    db::add_user(&mut conn, req.id, req.name.clone()).await;
+
     HttpResponse::Ok().body("OK")
 }
 
