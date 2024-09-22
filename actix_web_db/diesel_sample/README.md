@@ -29,7 +29,7 @@ diesel migration generate user
 diesel migration run
 
 - drop tables
-diesel migration redo
+diesel migration revert
 
 ```
 
