@@ -7,7 +7,7 @@
 - diesel cli v2.2.4 (Supported Backends: sqlite)
 - sqlite3 v3.37.2
 
-## sqlx
+## diesel
 
 ```
 - install sqlite (これやってないと、diesel_cliいれるとき落ちる)
