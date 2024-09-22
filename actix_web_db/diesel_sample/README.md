@@ -52,4 +52,8 @@ sqlite
 https://www.sqlite.org/
 
 
+diesel
+https://diesel.rs/guides/getting-started
 
+actix-web
+https://actix.rs/docs/databases/
